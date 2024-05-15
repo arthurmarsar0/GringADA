@@ -12,6 +12,8 @@
 		3F985C492BF2ADF6000BE96A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F985C482BF2ADF6000BE96A /* Assets.xcassets */; };
 		3F985C4C2BF2ADF6000BE96A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F985C4B2BF2ADF6000BE96A /* Preview Assets.xcassets */; };
 		3F985C532BF3E40D000BE96A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985C522BF3E40D000BE96A /* StyleGuide.swift */; };
+		3FC8DC902BF54923002087CE /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC8F2BF54923002087CE /* QuestionView.swift */; };
+		3FC8DC922BF5588D002087CE /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC912BF5588D002087CE /* CustomTextFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		3F985C482BF2ADF6000BE96A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3F985C4B2BF2ADF6000BE96A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3F985C522BF3E40D000BE96A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		3FC8DC8F2BF54923002087CE /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+		3FC8DC912BF5588D002087CE /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +57,10 @@
 		3F985C432BF2ADF4000BE96A /* GringADA */ = {
 			isa = PBXGroup;
 			children = (
+				3FC8DC8F2BF54923002087CE /* QuestionView.swift */,
 				3F985C442BF2ADF4000BE96A /* GringADAApp.swift */,
 				3F985C462BF2ADF4000BE96A /* ContentView.swift */,
+				3FC8DC912BF5588D002087CE /* CustomTextFields.swift */,
 				3F985C522BF3E40D000BE96A /* StyleGuide.swift */,
 				3F985C482BF2ADF6000BE96A /* Assets.xcassets */,
 				3F985C4A2BF2ADF6000BE96A /* Preview Content */,
@@ -140,6 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC8DC902BF54923002087CE /* QuestionView.swift in Sources */,
+				3FC8DC922BF5588D002087CE /* CustomTextFields.swift in Sources */,
 				3F985C472BF2ADF4000BE96A /* ContentView.swift in Sources */,
 				3F985C452BF2ADF4000BE96A /* GringADAApp.swift in Sources */,
 				3F985C532BF3E40D000BE96A /* StyleGuide.swift in Sources */,

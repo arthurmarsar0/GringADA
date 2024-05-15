@@ -7,38 +7,17 @@
 
 import SwiftUI
 
-struct CustomTextField: View {
-    
-    @Binding var value: Int?  //alterar esse código para funcionar para qualquer tipo
-    let placeholder: String
-    let title: String
-    
-    var body: some View{
-        ZStack{
-            VStack(alignment: .leading, spacing: 8.0) {
-                Text(title)
-                    .font(.header2)
-                    .foregroundStyle(.color4)
-                    .padding(.leading, 8)
-                TextField(placeholder, value: $value, format: .number)
-                    .padding(.vertical, 6)
-                    .padding(.leading, 6)
-                    .background(
-                        Color.color2
-                            .clipShape(.rect(cornerRadius: 24))
-                    )
-            }
-        }
-    }
-    
-}
 
 struct ContentView: View {
     
     @State var age: Int? = nil
-    @State var name: Int? = nil  // está em inteiro somente para essa versão do CustomTextField funcione
-    @State var motherTongue: Int? = nil
-    
+    @State var name: String = ""
+    @State var motherTongue: String = ""
+    @State var answer1: Int?
+    @State var answer2: Int?
+    @State var answer3: Int?
+    @State var answer4: Int?
+    @State var answer5$: Int?
     
     var body: some View {
         ZStack {
@@ -46,27 +25,60 @@ struct ContentView: View {
             Color(.color1)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             //MiddleGround - onde vai ficar os componentes que serão scrolaveis
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24.0){
-                    Text("Qual a sua compatibilidade com alguns idiomas?")
-                        .font(.header1)
-                        .foregroundStyle(.color4)
-                        .padding(.leading, 5)
-                    VStack(alignment: .leading, spacing: 8.0){
-                        CustomTextField(value: $name, placeholder: "", title: "Nome")
-                    }
-                    HStack{
+            VStack(spacing: 0.0) {
+                Rectangle()  // lembrar de adicionar o titulo do aplicativo ... 
+                    .foregroundColor(.color4)
+                    .ignoresSafeArea()
+                    .frame(width: 393)
+                    .frame(maxHeight: 70.0)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24.0){
+                        Text("Qual a sua compatibilidade com alguns idiomas?")
+                            .font(.header1)
+                            .foregroundStyle(.color4)
+                            .padding(.leading, 5)
+                            .padding(.top, 20.0)
                         VStack(alignment: .leading, spacing: 8.0){
-                            CustomTextField(value: $age, placeholder: "", title: "Idade:")
+                            CustomTextFieldString(value: $name, title: "Nome:")
                         }
-                        VStack(alignment: .leading, spacing: 8.0){
-                            CustomTextField(value: $motherTongue, placeholder: "", title: "Lingua Materna:")
+                        HStack{
+                            VStack(alignment: .leading, spacing: 8.0){
+                                CustomTextFieldNumber(value: $age, placeholder: "Idade", title: "Idade:")
+                            }
+                            VStack(alignment: .leading, spacing: 8.0){
+                                CustomTextFieldString(value: $motherTongue, title: "Lingua Materna:")
+                            }
                         }
+                        Spacer()
+                        Button(action: {}, label: {
+                            ZStack{
+                                Color.color3
+                                Text("START")
+                                    .foregroundStyle(.color1)
+                                //  .font(.___)
+                            }
+                            .cornerRadius(24.0)
+                        })
+                        .frame(width: 164, height: 36.0)
+                        .frame(maxWidth: .infinity)
+                        Spacer()
+                        VStack(alignment: .leading, spacing: 60.0) {
+                            
+                            Divider()
+                            QuestionView(selectedItem: $answer1, questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
+                            Divider()
+                            QuestionView(selectedItem: $answer2, questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
+                            Divider()
+                            QuestionView(selectedItem: $answer3, questionText: "Tacotaracotaracotaco sua piroka em meu tabaco vai batendo no meu rim")
+                            Spacer()
+                            // Button
+                            
+                        }
+                        
                     }
+                    .padding()
                 }
-                .padding()
             }
-            //FrontGround - nossa NavigationBar (como queremos customizar ela nao pode-se usar o inicializador oficial da linguagem
         }
     }
 }
