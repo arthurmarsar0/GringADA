@@ -14,6 +14,7 @@
 		3F985C532BF3E40D000BE96A /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F985C522BF3E40D000BE96A /* StyleGuide.swift */; };
 		3FC8DC902BF54923002087CE /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC8F2BF54923002087CE /* QuestionView.swift */; };
 		3FC8DC922BF5588D002087CE /* CustomTextFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC912BF5588D002087CE /* CustomTextFields.swift */; };
+		3FC8DC942BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3FC8DC932BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		3F985C522BF3E40D000BE96A /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		3FC8DC8F2BF54923002087CE /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		3FC8DC912BF5588D002087CE /* CustomTextFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFields.swift; sourceTree = "<group>"; };
+		3FC8DC932BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "LeagueGothic-Regular-VariableFont_wdth.ttf"; path = "../../../../../../Downloads/League_Gothic/LeagueGothic-Regular-VariableFont_wdth.ttf"; sourceTree = "<group>"; };
+		3FC8DC952BF690FC002087CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,8 @@
 		3F985C432BF2ADF4000BE96A /* GringADA */ = {
 			isa = PBXGroup;
 			children = (
+				3FC8DC952BF690FC002087CE /* Info.plist */,
+				3FC8DC932BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf */,
 				3FC8DC8F2BF54923002087CE /* QuestionView.swift */,
 				3F985C442BF2ADF4000BE96A /* GringADAApp.swift */,
 				3F985C462BF2ADF4000BE96A /* ContentView.swift */,
@@ -135,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F985C4C2BF2ADF6000BE96A /* Preview Assets.xcassets in Resources */,
+				3FC8DC942BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf in Resources */,
 				3F985C492BF2ADF6000BE96A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -287,6 +293,7 @@
 				DEVELOPMENT_TEAM = F687NLG76R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GringADA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -316,6 +323,7 @@
 				DEVELOPMENT_TEAM = F687NLG76R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GringADA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
