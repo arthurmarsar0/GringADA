@@ -36,7 +36,8 @@ struct CustomTextFieldString: View {
     
     @Binding var value: String
     let title: String
-
+    
+    
     var body: some View{
         ZStack{
             VStack(alignment: .leading, spacing: 8.0) {
