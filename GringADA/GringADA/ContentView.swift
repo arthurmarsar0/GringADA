@@ -11,8 +11,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State var age: Int? = nil
-    @State var name: String = ""
-   // @State var motherTongue: Idioms = .Selecione
+    @State var name: String? = ""
+    @State var selection1: Idioms?
     @State var answer1: Int?
     @State var answer2: Int?
     @State var answer3: Int?
@@ -20,7 +20,10 @@ struct ContentView: View {
     @State var answer5: Int?
     @State var failedInput: Bool = false
     
-    @State var selection1: Idioms? 
+    //Variaveis que guardarão as respostas
+    @State var compBra: Float = 0.0
+    @State var compEng: Float = 0.0
+    @State var compJpn: Float = 0.0
     
     var body: some View {
         ZStack {
@@ -40,6 +43,7 @@ struct ContentView: View {
                         .font(Font.custom("LeagueGothic-Regular", size:56.0))
                 }
                 ScrollView {
+                    //MARK: - CAIXA DE INTERAÇÃO INICIAL
                     VStack(alignment: .leading, spacing: 24.0){
                         Text("Qual a sua compatibilidade com alguns idiomas?")
                             .font(.header1)
@@ -61,7 +65,7 @@ struct ContentView: View {
                             //.zIndex(50)
                         }
                         Spacer()
-                        Button(action: {}, label: {
+                        Button(action: processTextFields, label: {
                             ZStack{
                                 Color.color3
                                 Text("START")
@@ -73,6 +77,7 @@ struct ContentView: View {
                         .frame(width: 164, height: 36.0)
                         .frame(maxWidth: .infinity)
                         Spacer()
+                        //MARK: - PERGUNTAS
                         VStack(alignment: .leading, spacing: 60.0) {
                             
                             //Divider()
@@ -107,13 +112,16 @@ struct ContentView: View {
         }
     }
     
-//    func processTextFields() {
-//        guard let name, let age, let motherTongue else {
-//            print("preencha o campo de entrada")
-//            failedInput = true
-//            return
-//        }
-//    }
+    //MARK: - CALCULOS
+    
+    
+    func processTextFields() {
+        guard let name, let age, let selection1 else {
+            print("preencha o campo de entrada")
+            failedInput = true
+            return
+        }
+    }
 }
 
 
