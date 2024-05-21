@@ -18,6 +18,8 @@
 		3FC8DC972BF7CF50002087CE /* Idioms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC962BF7CF50002087CE /* Idioms.swift */; };
 		3FC8DC992BF7D3DB002087CE /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC982BF7D3DB002087CE /* CustomPicker.swift */; };
 		3FC8DC9B2BFBECD7002087CE /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC9A2BFBECD7002087CE /* DropDownPicker.swift */; };
+		3FC8DC9F2BFD0F0D002087CE /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DC9E2BFD0F0D002087CE /* PopUp.swift */; };
+		3FC8DCA12BFD106D002087CE /* CustomPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8DCA02BFD106D002087CE /* CustomPopUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		3FC8DC962BF7CF50002087CE /* Idioms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idioms.swift; sourceTree = "<group>"; };
 		3FC8DC982BF7D3DB002087CE /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
 		3FC8DC9A2BFBECD7002087CE /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
+		3FC8DC9E2BFD0F0D002087CE /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
+		3FC8DCA02BFD106D002087CE /* CustomPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		3F985C432BF2ADF4000BE96A /* GringADA */ = {
 			isa = PBXGroup;
 			children = (
+				3FC8DC9E2BFD0F0D002087CE /* PopUp.swift */,
+				3FC8DCA02BFD106D002087CE /* CustomPopUp.swift */,
 				3FC8DC9A2BFBECD7002087CE /* DropDownPicker.swift */,
 				3FC8DC952BF690FC002087CE /* Info.plist */,
 				3FC8DC932BF690C3002087CE /* LeagueGothic-Regular-VariableFont_wdth.ttf */,
@@ -166,7 +172,9 @@
 				3FC8DC9B2BFBECD7002087CE /* DropDownPicker.swift in Sources */,
 				3FC8DC922BF5588D002087CE /* CustomTextFields.swift in Sources */,
 				3F985C472BF2ADF4000BE96A /* ContentView.swift in Sources */,
+				3FC8DC9F2BFD0F0D002087CE /* PopUp.swift in Sources */,
 				3F985C452BF2ADF4000BE96A /* GringADAApp.swift in Sources */,
+				3FC8DCA12BFD106D002087CE /* CustomPopUp.swift in Sources */,
 				3FC8DC972BF7CF50002087CE /* Idioms.swift in Sources */,
 				3F985C532BF3E40D000BE96A /* StyleGuide.swift in Sources */,
 			);

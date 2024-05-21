@@ -20,11 +20,12 @@ struct ContentView: View {
     @State var answer5: Int?
     @State var failedInput: Bool = false
     @State var failedAnswers: Bool = false
-    
+    @State var Poparemos: Bool = false
+
     //Variaveis que guardarão as respostas
-    @State var compBra: Float = 0.0
-    @State var compEng: Float = 0.0
-    @State var compJpn: Float = 0.0
+    @State var compBra: Int = 0
+    @State var compEng: Int = 0
+    @State var compJpn: Int = 0
     
     let failedFirstInputTitle = "Preencha os campos para começar"
     let failedAnswersTitle = "Responda todas as perguntas para finalizar"
@@ -60,6 +61,7 @@ struct ContentView: View {
                                 CustomTextFieldNumber(value: $age, placeholder: "Idade", title: "Idade:")
                                 VStack(alignment: .leading, spacing: 8.0){ //mudar para picker
                                     Text("Lingua Materna:")
+                                        .foregroundStyle(.color4)
                                         .padding(.leading, 8.0)
                                         .padding(.trailing, 40.0)
                                     
@@ -96,7 +98,7 @@ struct ContentView: View {
                                 Divider()
                                 QuestionView(selectedItem: $answer5, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
                                 Divider()
-                                Button(action: processQuestions, label: {
+                                Button(action: {processQuestions(); self.Poparemos.toggle()}, label: {
                                     ZStack{
                                         Color.color3
                                         Text("FINISH")
@@ -118,6 +120,15 @@ struct ContentView: View {
                             Button("OK", role: .cancel, action: {})}
                     }
                 }
+            }
+            
+            if Poparemos {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .onTapGesture {
+                        self.Poparemos.toggle()
+                    }
+                    PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: {})
             }
             
         }
