@@ -13,11 +13,11 @@ struct ContentView: View {
     @State var age: Int? = nil
     @State var name: String = ""
     @State var selection1: Idioms?
-    @State var answer1: Int?
-    @State var answer2: Int?
-    @State var answer3: Int?
-    @State var answer4: Int?
-    @State var answer5: Int?
+    @State var answer1: Int? = 3
+    @State var answer2: Int? = 2
+    @State var answer3: Int? = 1
+    @State var answer4: Int? = 4
+    @State var answer5: Int? = 0
     @State var failedInput: Bool = false
     @State var failedAnswers: Bool = false
     @State var Poparemos: Bool = false
@@ -77,7 +77,6 @@ struct ContentView: View {
                                     Color.color3
                                     Text("START")
                                         .foregroundStyle(.color1)
-                                    //  .font(.___)
                                 }
                                 .cornerRadius(24.0)
                             })
@@ -87,7 +86,6 @@ struct ContentView: View {
                             //MARK: - PERGUNTAS
                             VStack(alignment: .leading, spacing: 60.0) {
                                 
-                                //Divider()
                                 QuestionView(selectedItem: $answer1, questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
                                 Divider()
                                 QuestionView(selectedItem: $answer2, questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
@@ -119,20 +117,23 @@ struct ContentView: View {
                         .alert(failedAnswersTitle, isPresented: $failedAnswers){
                             Button("OK", role: .cancel, action: {})}
                     }
+                    
+                }
+                if Poparemos {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            self.Poparemos.toggle()
+                        }
+                        PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: {})
                 }
             }
             
-            if Poparemos {
-                Color.black.opacity(0.4)
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .onTapGesture {
-                        self.Poparemos.toggle()
-                    }
-                    PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: {})
-            }
+            
             
         }
         .scrollDismissesKeyboard(.immediately)
+        
     }
     
     //MARK: - CALCULOS
@@ -144,6 +145,14 @@ struct ContentView: View {
             failedInput = true
             return
         }
+        
+        if age <= 20 {
+            compBra += 5
+            compEng += 5
+            compJpn += 5
+        }
+        
+        
     }
     
     func processQuestions(){
@@ -152,10 +161,155 @@ struct ContentView: View {
             failedAnswers = true
             return
         }
+        
+        switch answer1 {
+        case 0:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 1:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 2:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 3:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 4:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        default:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        }
+        
+        switch answer2 {
+        case 0:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 1:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 2:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 3:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 4:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        default:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        }
+        
+        switch answer3 {
+        case 0:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 1:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 2:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 3:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 4:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        default:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        }
+        
+        switch answer4 {
+        case 0:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 1:
+            compBra += 1
+            compEng += 0
+            compJpn += 0
+        case 2:
+            compBra += 2
+            compEng += 0
+            compJpn += 0
+        case 3:
+            compBra += 3
+            compEng += 0
+            compJpn += 0
+        case 4:
+            compBra += 4
+            compEng += 0
+            compJpn += 0
+        default:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        }
+        
+        switch answer5 {
+        case 0:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 1:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 2:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 3:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        case 4:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        default:
+            compBra += 0
+            compEng += 0
+            compJpn += 0
+        }
+        
+        
+        //Garantia que no final os resultados estarão menores que 100%
+        if compBra >= 100{
+            compBra = 100
+        }
+        if compEng >= 100{
+            compEng = 100
+        }
+        if compJpn >= 100{
+            compJpn = 100
+        }
     }
 }
-
-
 
 #Preview {
     ContentView()
