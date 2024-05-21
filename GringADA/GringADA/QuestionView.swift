@@ -49,7 +49,7 @@ struct QuestionView: View {
     struct PreviewView: View {
         @State var item: Int? = 0
         var body: some View {
-            QuestionView(selectedItem: $item, questionText: "viadoooo")
+            QuestionView(selectedItem: $item, questionText: "Pergunta X")
         }
     }
     

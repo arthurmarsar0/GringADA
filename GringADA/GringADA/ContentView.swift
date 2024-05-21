@@ -12,12 +12,15 @@ struct ContentView: View {
     
     @State var age: Int? = nil
     @State var name: String = ""
-    @State var motherTongue: String = ""
+   // @State var motherTongue: Idioms = .Selecione
     @State var answer1: Int?
     @State var answer2: Int?
     @State var answer3: Int?
     @State var answer4: Int?
     @State var answer5: Int?
+    @State var failedInput: Bool = false
+    
+    @State var selection1: Idioms? 
     
     var body: some View {
         ZStack {
@@ -43,16 +46,19 @@ struct ContentView: View {
                             .foregroundStyle(.color4)
                             .padding(.leading, 5)
                             .padding(.top, 20.0)
-                        VStack(alignment: .leading, spacing: 8.0){
-                            CustomTextFieldString(value: $name, title: "Nome:")
-                        }
-                        HStack{
-                            VStack(alignment: .leading, spacing: 8.0){
-                                CustomTextFieldNumber(value: $age, placeholder: "Idade", title: "Idade:")
+                        CustomTextFieldString(value: $name, title: "Nome:")
+                        HStack(spacing: 17.0){
+                            CustomTextFieldNumber(value: $age, placeholder: "Idade", title: "Idade:")
+                            VStack(alignment: .leading, spacing: 8.0){ //mudar para picker
+                                Text("Lingua Materna:")
+                                    .padding(.leading, 8.0)
+                                    .padding(.trailing, 40.0)
+                                
+                                        DropDownPicker(
+                                            selection: $selection1
+                                        )
                             }
-                            VStack(alignment: .leading, spacing: 8.0){
-                                CustomTextFieldString(value: $motherTongue, title: "Lingua Materna:")
-                            }
+                            //.zIndex(50)
                         }
                         Spacer()
                         Button(action: {}, label: {
@@ -100,7 +106,17 @@ struct ContentView: View {
             }
         }
     }
+    
+//    func processTextFields() {
+//        guard let name, let age, let motherTongue else {
+//            print("preencha o campo de entrada")
+//            failedInput = true
+//            return
+//        }
+//    }
 }
+
+
 
 #Preview {
     ContentView()
