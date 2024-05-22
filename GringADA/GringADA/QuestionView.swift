@@ -26,7 +26,9 @@ struct QuestionView: View {
                 ForEach(0...4, id: \.self) { index in
                     Button(action: {
                         selectedItem = index
-                        showNext?.toggle()
+                        if showNext == false{
+                            showNext?.toggle()
+                        }
                     },
                            label: {
                             Color.color2
