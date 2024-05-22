@@ -10,6 +10,9 @@ import SwiftUI
 
 struct QuestionView: View {
     @Binding var selectedItem: Int?
+    @Binding var isShowing: Bool?
+    @Binding var showNext: Bool?
+    
     let questionText: String
     
     
@@ -23,6 +26,7 @@ struct QuestionView: View {
                 ForEach(0...4, id: \.self) { index in
                     Button(action: {
                         selectedItem = index
+                        showNext?.toggle()
                     },
                            label: {
                             Color.color2
@@ -34,6 +38,7 @@ struct QuestionView: View {
                 }
             }
         }
+        .opacity(isShowing == true ? 1 : 0.5)
     }
     
     func getShape(of index: Int) -> some Shape {
@@ -49,7 +54,7 @@ struct QuestionView: View {
     struct PreviewView: View {
         @State var item: Int? = 0
         var body: some View {
-            QuestionView(selectedItem: $item, questionText: "Pergunta X")
+            QuestionView(selectedItem: $item,  isShowing: .constant(false), showNext: .constant(false) ,questionText: "Pergunta X")
         }
     }
     

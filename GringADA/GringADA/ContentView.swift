@@ -17,15 +17,23 @@ struct ContentView: View {
     @State var answer2: Int? = 2
     @State var answer3: Int? = 1
     @State var answer4: Int? = 4
-    @State var answer5: Int? = 0
+    @State var answer5: Int? = 4
+    
+    @State var isShowing1: Bool? = false
+    @State var isShowing2: Bool? = false
+    @State var isShowing3: Bool? = false
+    @State var isShowing4: Bool? = false
+    @State var isShowing5: Bool? = false
+    @State var aux: Bool? = false
+    
     @State var failedInput: Bool = false
     @State var failedAnswers: Bool = false
     @State var Poparemos: Bool = false
 
     //Variaveis que guardarão as respostas
-    @State var compBra: Int = 0
-    @State var compEng: Int = 0
-    @State var compJpn: Int = 0
+    @State var compBra: Int = 0 // 4, 4, 3/2, 4, 4
+    @State var compEng: Int = 0 // 0, 0, 0
+    @State var compJpn: Int = 0 //
     
     let failedFirstInputTitle = "Preencha os campos para começar"
     let failedAnswersTitle = "Responda todas as perguntas para finalizar"
@@ -86,15 +94,15 @@ struct ContentView: View {
                             //MARK: - PERGUNTAS
                             VStack(alignment: .leading, spacing: 60.0) {
                                 
-                                QuestionView(selectedItem: $answer1, questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
+                                QuestionView(selectedItem: $answer1,isShowing: $isShowing1, showNext: $isShowing2 ,questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
                                 Divider()
-                                QuestionView(selectedItem: $answer2, questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
+                                QuestionView(selectedItem: $answer2,isShowing: $isShowing2, showNext: $isShowing3,questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
                                 Divider()
-                                QuestionView(selectedItem: $answer3, questionText: "Prefiro obras literárias com predominancia de texto à imagens")
+                                QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4 ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
                                 Divider()
-                                QuestionView(selectedItem: $answer4, questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
+                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
                                 Divider()
-                                QuestionView(selectedItem: $answer5, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
+                                QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux ,questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
                                 Divider()
                                 Button(action: {processQuestions(); self.Poparemos.toggle()}, label: {
                                     ZStack{
@@ -146,6 +154,8 @@ struct ContentView: View {
             return
         }
         
+        isShowing1?.toggle()
+        
         if age <= 20 {
             compBra += 5
             compEng += 5
@@ -164,25 +174,25 @@ struct ContentView: View {
         
         switch answer1 {
         case 0:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += -5
+            compEng += 5
+            compJpn += 15
         case 1:
             compBra += 0
-            compEng += 0
-            compJpn += 0
+            compEng += 10
+            compJpn += 10
         case 2:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 5
+            compEng += 15
+            compJpn += 5
         case 3:
-            compBra += 0
-            compEng += 0
+            compBra += 10
+            compEng += 10
             compJpn += 0
         case 4:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 20
+            compEng += 5
+            compJpn += -5
         default:
             compBra += 0
             compEng += 0
@@ -191,24 +201,24 @@ struct ContentView: View {
         
         switch answer2 {
         case 0:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 3
+            compEng += 10
+            compJpn += 20
         case 1:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 8
+            compEng += 8
+            compJpn += 10
         case 2:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 10
+            compEng += 6
+            compJpn += 5
         case 3:
-            compBra += 0
-            compEng += 0
+            compBra += 13
+            compEng += 4
             compJpn += 0
         case 4:
-            compBra += 0
-            compEng += 0
+            compBra += 15
+            compEng += 2
             compJpn += 0
         default:
             compBra += 0
@@ -218,25 +228,25 @@ struct ContentView: View {
         
         switch answer3 {
         case 0:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 10
+            compEng += 10
+            compJpn += 15
         case 1:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 5
+            compEng += 5
+            compJpn += 10
         case 2:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 13
+            compEng += 13
+            compJpn += 5
         case 3:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 15
+            compEng += 14
+            compJpn += 5
         case 4:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 15 // 20
+            compEng += 17
+            compJpn += 10
         default:
             compBra += 0
             compEng += 0
@@ -245,25 +255,25 @@ struct ContentView: View {
         
         switch answer4 {
         case 0:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
-        case 1:
-            compBra += 1
-            compEng += 0
-            compJpn += 0
-        case 2:
-            compBra += 2
-            compEng += 0
-            compJpn += 0
-        case 3:
-            compBra += 3
-            compEng += 0
-            compJpn += 0
-        case 4:
             compBra += 4
-            compEng += 0
-            compJpn += 0
+            compEng += 4
+            compJpn += 15
+        case 1:
+            compBra += 6
+            compEng += 6
+            compJpn += 10
+        case 2:
+            compBra += 8
+            compEng += 8
+            compJpn += 5
+        case 3:
+            compBra += 20
+            compEng += 10
+            compJpn += 5
+        case 4:
+            compBra += 8
+            compEng += 8
+            compJpn += 5
         default:
             compBra += 0
             compEng += 0
@@ -276,21 +286,21 @@ struct ContentView: View {
             compEng += 0
             compJpn += 0
         case 1:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 5
+            compEng += 5
+            compJpn += 5
         case 2:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 10
+            compEng += 10
+            compJpn += 10
         case 3:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 15
+            compEng += 15
+            compJpn += 15
         case 4:
-            compBra += 0
-            compEng += 0
-            compJpn += 0
+            compBra += 20
+            compEng += 20
+            compJpn += 20
         default:
             compBra += 0
             compEng += 0
@@ -307,6 +317,17 @@ struct ContentView: View {
         }
         if compJpn >= 100{
             compJpn = 100
+        }
+        
+        //Garantia que no final o resultado serão maiores que 0
+        if compBra <= 0{
+            compBra = 0
+        }
+        if compEng <= 0{
+            compEng = 0
+        }
+        if compJpn <= 0{
+            compJpn = 0
         }
     }
 }
