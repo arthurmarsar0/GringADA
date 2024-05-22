@@ -19,7 +19,7 @@ struct ContentView: View {
     @State var answer4: Int?
     @State var answer5: Int?
     
-    @State var answerable: Bool = true
+    @State var disabled: Bool = true
     @State var isShowing1: Bool? = false
     @State var isShowing2: Bool? = false
     @State var isShowing3: Bool? = false
@@ -81,10 +81,9 @@ struct ContentView: View {
                                 //.zIndex(50)
                             }
                             Spacer()
-                            Button(action:{
-                                processTextFields()
-                                answerable.toggle()
-                            }, label: {
+                            Button(action:
+                                processTextFields
+                                , label: {
                                 ZStack{
                                     Color.color3
                                     Text("START")
@@ -98,15 +97,15 @@ struct ContentView: View {
                             //MARK: - PERGUNTAS
                             VStack(alignment: .leading, spacing: 60.0) {
                                 
-                                QuestionView(selectedItem: $answer1,isShowing: $isShowing1 ,showNext: $isShowing2 ,answerable: $answerable ,questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
+                                QuestionView(selectedItem: $answer1,isShowing: $isShowing1 ,showNext: $isShowing2 ,disabled: $disabled ,questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
                                 Divider()
-                                QuestionView(selectedItem: $answer2,isShowing: $isShowing2, showNext: $isShowing3,answerable: $answerable ,questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
+                                QuestionView(selectedItem: $answer2,isShowing: $isShowing2, showNext: $isShowing3,disabled: $disabled ,questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
                                 Divider()
-                                QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4,answerable: $answerable  ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
+                                QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4,disabled: $disabled  ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
                                 Divider()
-                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,answerable: $answerable ,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
+                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,disabled: $disabled ,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
                                 Divider()
-                                QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux, answerable: $answerable, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
+                                QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux, disabled: $disabled, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
                                 Divider()
                                 Button(action: {processQuestions(); self.Poparemos.toggle()}, label: {
                                     ZStack{
@@ -137,7 +136,7 @@ struct ContentView: View {
                         .onTapGesture {
                             self.Poparemos.toggle()
                         }
-                        PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: {})
+                        PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: resetAttributes)
                 }
             }
             
@@ -150,6 +149,26 @@ struct ContentView: View {
     
     //MARK: - CALCULOS
     
+    func resetAttributes() {
+        age = nil
+        name = ""
+        selection1 = nil
+        answer1 = nil
+        answer2 = nil
+        answer3 = nil
+        answer4 = nil
+        answer5 = nil
+        isShowing1 = false
+        isShowing2 = false
+        isShowing3 = false
+        isShowing4 = false
+        isShowing5 = false
+        disabled = true
+        
+        compBra = 0
+        compEng = 0
+        compJpn = 0
+    }
     
     func processTextFields() {
         guard let age, let selection1 else {
@@ -159,6 +178,7 @@ struct ContentView: View {
         }
         
         isShowing1?.toggle()
+        disabled.toggle()
         
         if age <= 20 {
             compBra += 5
@@ -169,7 +189,8 @@ struct ContentView: View {
         
     }
     
-    func processQuestions(){ //TODO: Analisar os calculos!!
+    //TODO: Analisar os calculos!!
+    func processQuestions(){
         guard let answer1, let answer2, let answer3, let answer4, let answer5 else{
             print("Responda todas as perguntas para calcular")
             failedAnswers = true
