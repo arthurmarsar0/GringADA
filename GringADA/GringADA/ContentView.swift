@@ -13,12 +13,13 @@ struct ContentView: View {
     @State var age: Int? = nil
     @State var name: String = ""
     @State var selection1: Idioms?
-    @State var answer1: Int? = 3
-    @State var answer2: Int? = 2
-    @State var answer3: Int? = 1
-    @State var answer4: Int? = 4
-    @State var answer5: Int? = 4
+    @State var answer1: Int?
+    @State var answer2: Int?
+    @State var answer3: Int?
+    @State var answer4: Int?
+    @State var answer5: Int?
     
+    @State var answerable: Bool = true
     @State var isShowing1: Bool? = false
     @State var isShowing2: Bool? = false
     @State var isShowing3: Bool? = false
@@ -80,7 +81,10 @@ struct ContentView: View {
                                 //.zIndex(50)
                             }
                             Spacer()
-                            Button(action: processTextFields, label: {
+                            Button(action:{
+                                processTextFields()
+                                answerable.toggle()
+                            }, label: {
                                 ZStack{
                                     Color.color3
                                     Text("START")
@@ -94,15 +98,15 @@ struct ContentView: View {
                             //MARK: - PERGUNTAS
                             VStack(alignment: .leading, spacing: 60.0) {
                                 
-                                QuestionView(selectedItem: $answer1,isShowing: $isShowing1, showNext: $isShowing2 ,questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
+                                QuestionView(selectedItem: $answer1,isShowing: $isShowing1 ,showNext: $isShowing2 ,answerable: $answerable ,questionText: "Você é uma pessoa que se comunica com muito toques/gestos")
                                 Divider()
-                                QuestionView(selectedItem: $answer2,isShowing: $isShowing2, showNext: $isShowing3,questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
+                                QuestionView(selectedItem: $answer2,isShowing: $isShowing2, showNext: $isShowing3,answerable: $answerable ,questionText: "Normalmente um me comunico diretamente se eu discordo ou concordo de algo")
                                 Divider()
-                                QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4 ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
+                                QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4,answerable: $answerable  ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
                                 Divider()
-                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
+                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,answerable: $answerable ,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
                                 Divider()
-                                QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux ,questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
+                                QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux, answerable: $answerable, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
                                 Divider()
                                 Button(action: {processQuestions(); self.Poparemos.toggle()}, label: {
                                     ZStack{
@@ -165,7 +169,7 @@ struct ContentView: View {
         
     }
     
-    func processQuestions(){
+    func processQuestions(){ //TODO: Analisar os calculos!!
         guard let answer1, let answer2, let answer3, let answer4, let answer5 else{
             print("Responda todas as perguntas para calcular")
             failedAnswers = true

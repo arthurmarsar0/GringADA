@@ -12,6 +12,7 @@ struct QuestionView: View {
     @Binding var selectedItem: Int?
     @Binding var isShowing: Bool?
     @Binding var showNext: Bool?
+    @Binding var answerable: Bool
     
     let questionText: String
     
@@ -38,9 +39,10 @@ struct QuestionView: View {
                             )
                     })
                 }
+                .disabled(answerable)
             }
         }
-        .opacity(isShowing == true ? 1 : 0.5)
+        .opacity(isShowing == true ? 1 : 0.3)
     }
     
     func getShape(of index: Int) -> some Shape {
@@ -56,7 +58,7 @@ struct QuestionView: View {
     struct PreviewView: View {
         @State var item: Int? = 0
         var body: some View {
-            QuestionView(selectedItem: $item,  isShowing: .constant(false), showNext: .constant(false) ,questionText: "Pergunta X")
+            QuestionView(selectedItem: $item,  isShowing: .constant(false), showNext: .constant(false) ,answerable: .constant(false) ,questionText: "Pergunta X")
         }
     }
     
