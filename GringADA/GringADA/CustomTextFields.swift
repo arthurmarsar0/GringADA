@@ -27,6 +27,8 @@ struct CustomTextFieldNumber: View {
                         Color.color2
                             .clipShape(.rect(cornerRadius: 24))
                     )
+                    .keyboardType(.numberPad)
+                    .scrollDismissesKeyboard(.immediately)
             }
         }
     }
@@ -54,6 +56,7 @@ struct CustomTextFieldString: View {
                     )
             }
         }
+        
     }
 }
 

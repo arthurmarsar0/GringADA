@@ -30,6 +30,8 @@ struct ContentView: View {
     @State var failedInput: Bool = false
     @State var failedAnswers: Bool = false
     @State var Poparemos: Bool = false
+    
+    @State var toCalculate : Bool = true
 
     //Variaveis que guardarão as respostas
     @State var compBra: Int = 0 // 4, 4, 3/2, 4, 4
@@ -136,13 +138,14 @@ struct ContentView: View {
                         .onTapGesture {
                             self.Poparemos.toggle()
                         }
-                        PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn, resetAttributes: resetAttributes)
+                    PopUp(showAlert: $Poparemos, resultBra: $compBra, resultEng: $compEng, resultJpn: $compJpn,motherTongue: selection1!.rawValue, resetAttributes: resetAttributes)
                 }
             }
             
             
             
         }
+        .scrollDismissesKeyboard(.immediately)
         .scrollDismissesKeyboard(.immediately)
         
     }
@@ -164,6 +167,7 @@ struct ContentView: View {
         isShowing4 = false
         isShowing5 = false
         disabled = true
+        toCalculate = true
         
         compBra = 0
         compEng = 0
@@ -186,16 +190,31 @@ struct ContentView: View {
             compJpn += 5
         }
         
+        if selection1 == .portugues {
+            compBra = 100
+        }
+        if selection1 == .ingles {
+            compEng = 100
+        }
+        if selection1 == .japones{
+            compJpn = 100
+        }
         
     }
     
     //TODO: Analisar os calculos!!
     func processQuestions(){
+        
         guard let answer1, let answer2, let answer3, let answer4, let answer5 else{
             print("Responda todas as perguntas para calcular")
             failedAnswers = true
             return
         }
+        
+        if toCalculate == false {
+            return
+        }
+        toCalculate = false
         
         switch answer1 {
         case 0:
