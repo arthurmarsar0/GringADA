@@ -105,7 +105,7 @@ struct ContentView: View {
                                 Divider()
                                 QuestionView(selectedItem: $answer3,isShowing: $isShowing3,showNext: $isShowing4,disabled: $disabled  ,questionText: "Prefiro obras literárias com predominancia de texto à imagens")
                                 Divider()
-                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,disabled: $disabled ,questionText: "Em um idioma, eu me fascino mais pela relação entra as palavras do que a singularidade de cada palavra em si")
+                                QuestionView(selectedItem: $answer4,isShowing: $isShowing4, showNext: $isShowing5,disabled: $disabled ,questionText: "Em um idioma, eu me fascino mais pela relação entre as palavras do que a singularidade de cada palavra em si")
                                 Divider()
                                 QuestionView(selectedItem: $answer5,isShowing: $isShowing5, showNext: $aux, disabled: $disabled, questionText: "Tenho costume de consumir conteúdo de outras culturas em seu idioma de origem (e.g: Musicas no idioma original e filmes/séries legendada)")
                                 Divider()
